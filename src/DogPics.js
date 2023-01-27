@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 // to fix, pass an empty array as the second argument for useEffect
 function DogPics() {
   const [images, setImages] = useState([]);
+  const {count, setCount} = useState(0)
 
   useEffect(() => {
     console.log("useEffect");
@@ -13,7 +14,7 @@ function DogPics() {
         console.log("setState");
         setImages(data.message);
       });
-  });
+  }, []);//[]DEPENDENCIES ARRAY
 
   console.log("render");
 
@@ -22,6 +23,7 @@ function DogPics() {
       {images.map((image) => (
         <img src={image} key={image} />
       ))}
+
     </div>
   );
 }
